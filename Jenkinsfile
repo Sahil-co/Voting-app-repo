@@ -59,8 +59,9 @@ pipeline {
 				     def image = docker.build('sahil9604609750/jenkins-course:latest')
 					 image.push()
 				  }
+				}
 			}
 		 }
-	  }
+	   }
     }
 }
