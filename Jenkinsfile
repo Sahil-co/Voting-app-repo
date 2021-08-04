@@ -22,7 +22,7 @@ pipeline {
 	  
 	  stage('Start test app') {
          steps {
-            bat """
+            powershell """
                docker-compose up -d
                ./scripts/test_container.ps1
             """
@@ -38,14 +38,14 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            bat """
+            powershell """
                pytest ./tests/test_sample.py
             """
          }
       }
       stage('Stop test app') {
          steps {
-            bat """
+            powershell """
                docker-compose down
             """
          }
