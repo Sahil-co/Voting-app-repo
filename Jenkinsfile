@@ -53,7 +53,7 @@ pipeline {
 	  stage('Push Container'){
 	     steps {
 		    echo "Workspace is $WORKSPACE"
-			dir("$WORKSPACE/azure-vote") {
+			dir("$WORKSPACE\azure-vote") {
 			   script {
 			      docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
 				     def image = docker.build('sahil9604609750/jenkins-course:latest')
