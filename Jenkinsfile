@@ -50,18 +50,13 @@ pipeline {
             """
          }
       }
-	  stage('Push Container'){
-	     steps {
-		    echo "Workspace is $WORKSPACE"
-			dir("$WORKSPACE/azure-vote") {
-			   script {
-			      docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
-				     def image = docker.build('sahil9604609750/jenkins-course:latest')
-					 image.push()
-				  }
-				}
-			}
-		 }
-	   }
+	  stage('Run Trivy') {
+               steps {
+                  //sleep(time: 30, unit: 'SECONDS')
+                  powershell """
+                  C:\\Windows\\System32\\wsl.exe -- sudo trivy sahil9604609750/jenkins-course
+                  """
+               }
+      }
     }
 }
