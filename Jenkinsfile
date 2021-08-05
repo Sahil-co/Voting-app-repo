@@ -3,10 +3,17 @@
 pipeline {
   agent any
   stages {
-    stage('Call Library Hello-World Function') {
+    stage('Call Library Function with an arguement') {
       steps {
         script {
-          helloWorld()
+          helloArgs('Jenkins!')
+        }
+      }
+    }
+    stage('Call Additional Library Functions') {
+      steps {
+        script {
+          helloArgs.goodbyeWorld('Jenkins!')
         }
       }
     }
