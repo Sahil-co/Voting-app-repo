@@ -50,13 +50,14 @@ pipeline {
             """
          }
       }
-	  stage('Run Trivy') {
+	  stage('Run Anchore') {
                steps {
-                  //sleep(time: 30, unit: 'SECONDS')
                   powershell """
-                  C:\\Windows\\System32\\wsl.exe -- sudo trivy sahil9604609750/jenkins-course
+                     Write-Output "sahil9604609750/jenkins-course" > anchore_images
                   """
+                  anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
       }
+	  
     }
 }
